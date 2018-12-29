@@ -31,7 +31,7 @@ class Question(object):
         self.p = p
 
     def ask(self):
-        self.p = raw_input('Give a prime number: ')
+        self.p = raw_input('\nGive a prime number: ')
         self.p = int(self.p)
         if self.p not in prime_list:
             if self.p == 0:
@@ -46,8 +46,6 @@ class Question(object):
             for_test.ask()
         else:
             return self.p
-
-toc = time.clock()
 
 def lucas_lehmer_prime_test(p):
     if p == 2 or p == 3:
@@ -83,8 +81,7 @@ print "Quit program by writing 0\n"
 while True:
     for_test = Question(0)
     for_test.ask()
+    toc = time.clock()
     lucas_lehmer_prime_test(for_test.p)
-
-tac = time.clock()
-
-print "Time spent:", tac - toc
+    tac = time.clock()
+    print "Time spent:", tac - toc
