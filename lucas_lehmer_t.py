@@ -60,7 +60,7 @@ def lucas_lehmer_prime_test(p):
     # Loops p - 2 times while increasing s.
     # This s is an important number, since M has to divide s^2-2 for
     # M to be a prime number. This has been proved to be 100% accurate,
-    # meaning that if M divides s^2-2 with zero residue then M is
+    # meaning that if M divides s[p-1] with zero residue then M is
     # definitely a prime number!
     #######
     while (i - 1) <= p - 2:
