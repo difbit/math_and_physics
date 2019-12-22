@@ -1,39 +1,38 @@
-
 import time
+import random
+from itertools import islice
 
 
-class Prime(object):
+def timeit(f):
+    """Counts function run time"""
+    def timed(*args, **kw):
+        before = time.time()
+        result = f(*args, **kw)
+        after = time.time()
 
-    def __init__(self, limit):
-        self.limit = limit
+        print "Elapsed time: ", after - before
+        return result
+    return timed
 
-    def timeit(f):
-        def timed(*args, **kw):
-            before = time.time()
-            result = f(*args, **kw)
-            after = time.time()
-
-            print "Elapsed time: ", after - before
-            return result
-        return timed
-
-    @timeit
-    def get_primes(self):
-        range_limit = self.limit
-
-        for num in range(2, range_limit):
-            i = 2
-            if num == 2:
-                yield num
-            while i < num:
-                if i <= (num / 2):
-                    if num % i == 0:
-                        break
-                else:
-                    yield num
+@timeit
+def get_primes(n=2):
+    """Creates a generator object"""
+    while True:
+        i = 2
+        if n == 2:
+            yield n
+        while i < n:
+            if i <= (n / 2):
+                if n % i == 0:
                     break
-                i += 1
+            else:
+                yield n
+                break
+            i += 1
+        n += 1
 
 if __name__ == '__main__':
-    prime = Prime(10000000)
-    print prime.get_primes()
+    # Example uses
+    print list(islice(get_primes(), 1))
+    print list(islice(get_primes(), 100))
+    print list(islice(get_primes(), 50, 250))
