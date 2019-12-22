@@ -15,8 +15,9 @@ def timeit(f):
     return timed
 
 @timeit
-def get_primes(n=2):
-    """Creates a generator object"""
+def get_primes(n=2, call_one_prime=False):
+    """Creates a generator object, use eg. get_primes(1459, True) to check
+    if 1459 is a prime number"""
     while True:
         i = 2
         if n == 2:
@@ -30,6 +31,8 @@ def get_primes(n=2):
                 break
             i += 1
         n += 1
+        if call_one_prime:
+            break
 
 if __name__ == '__main__':
     # Example uses
