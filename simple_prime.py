@@ -10,7 +10,7 @@ def timeit(f):
         result = f(*args, **kw)
         after = time.time()
 
-        print "Elapsed time: ", after - before
+        print "Elapsed time:", after - before
         return result
     return timed
 
